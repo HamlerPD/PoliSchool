@@ -1,0 +1,4 @@
+﻿
+namespace PoliSchool.DAL.Entities
+{
+}
