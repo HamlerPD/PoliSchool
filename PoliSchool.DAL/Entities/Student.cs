@@ -8,6 +8,6 @@ namespace PoliSchool.DAL.Entities
         public int Id { get; set; }
 
         public DateTime? EnrollmentDate { get; set; }
-
+        public DateTime Creationdate { get; internal set; }
     }
 }
