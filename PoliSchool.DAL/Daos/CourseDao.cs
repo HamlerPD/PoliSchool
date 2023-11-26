@@ -31,6 +31,7 @@ namespace PoliSchool.DAL.Daos
                 model.Creationdate = course.Creationdate;
                 model.CourseId = course.CourseId;
                 model.Title = course.Title;
+                model.Credits = course.Credits;
             }
             catch(Exception ex)
             {
@@ -41,12 +42,45 @@ namespace PoliSchool.DAL.Daos
 
         public List<CourseModel> GetCourses()
         {
-            throw new NotImplementedException();
-        }
+            List<CourseModel> course = new List<CourseModel>();
+            try
+            {
+                var query = from co in this.schoolDb.Courses
+                            where co.Deleted == false
+                            orderby co.Creationdate descending
+                            select new CourseModel()
+                            {
+                                Creationdate= co.Creationdate,
+                                CourseId = co.CourseId,
+                                Title = co.Title,
+                                Credits = co.Credits,
+                            };
+
+            }
+            catch(Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
+            return course;
+        } 
 
         public void RemoveCourse(Course course)
         {
-            throw new NotImplementedException();
+            CourseModel model = new CourseModel();
+            try
+            {
+                Course? courseToRemove = this.schoolDb.Courses.Find(course.CourseId);
+
+                if (courseToRemove == null)
+                    throw new CourseDaoExceptions(" El curso no se encuentra registrado ");
+                courseToRemove.Deleted = course.Deleted;
+                courseToRemove.DeletedDate = course.DeletedDate;
+                courseToRemove.UserDeleted = course.UserDeleted;
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
         }
 
         public void SaveCourse(Course course)
