@@ -12,12 +12,12 @@ namespace PoliSchool.DAL.Models
 
         public String CreationdateDisplay 
         {
-            get { return this.Creationdate.ToString("dd/mm/yyyy")}
+            get { return this.Creationdate.ToString("dd/mm/yyyy"); }
         }
 
         public String EnrollmentDateDisplay
         {
-            get { return this.EnrollmentDate.ToString("dd/mm/yyyy")}
+            get { return this.EnrollmentDate.ToString("dd/mm/yyyy"); }
         }
     }
 }
