@@ -76,6 +76,9 @@ namespace PoliSchool.DAL.Daos
                 courseToRemove.Deleted = course.Deleted;
                 courseToRemove.DeletedDate = course.DeletedDate;
                 courseToRemove.UserDeleted = course.UserDeleted;
+
+                this.schoolDb.Courses.Update(courseToRemove);
+                this.schoolDb.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -83,14 +86,6 @@ namespace PoliSchool.DAL.Daos
             }
         }
 
-        public void SaveCourse(Course course)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCourse(Course course)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

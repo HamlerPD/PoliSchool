@@ -10,7 +10,6 @@ namespace PoliSchool.DAL.Entities
         public string? Title { get; set; }
         public int Credits { get; set; }
         public int DepartmentId { get; set; }
-
-
+        public object Saved { get; internal set; }
     }
 }

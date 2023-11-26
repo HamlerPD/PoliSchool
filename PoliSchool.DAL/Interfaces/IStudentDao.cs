@@ -12,9 +12,9 @@ namespace PoliSchool.DAL.Interfaces
         void UpdateStudent(Student student);
         void RemoveStudent(Student student);
 
-        List<Student> GetStudents();
+        List<StudentModel> GetStudents();
 
-        StudentModel GetStudent(int studentId);
+        StudentModel GetStudentById(int studentId);
 
     }
 }

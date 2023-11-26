@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PoliSchool.DAL.Entities
 {
     [Table("OfficeAssignment")]
-    public partial class OfficeAssignment
+    public partial class OfficeAssignment : BaseEntity
     {
         public int InstructorId { get; set; }
         public string? Location { get; set; }
