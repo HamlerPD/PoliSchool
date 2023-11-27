@@ -73,28 +73,75 @@ namespace PoliSchool.DAL.Daos
         {
             try
             {
-                Student? studentToRemoved = this.schoolDb.Students.Find(student.Id);
-                if (studentToRemoved is null)
-                    throw new StudentDaoExceptions(" El estudiante no se encuentra registrado");
-                studentToRemoved.Deleted = student.Deleted;
+                Student? studentToRemove = this.schoolDb.Students.Find(student.Id);
 
-                this.schoolDb.Students.Update(studentToRemoved);
+                if (studentToRemove is null)
+                    throw new StudentDaoExceptions("El estudiante no se encuentra registrado.");
+
+
+                studentToRemove.Deleted = student.Deleted;
+                studentToRemove.DeletedDate = student.DeletedDate;
+                studentToRemove.UserDeleted = student.UserDeleted;
+
+                this.schoolDb.Students.Update(studentToRemove);
                 this.schoolDb.SaveChanges();
+
             }
             catch (Exception ex)
             {
+
                 throw new StudentDaoExceptions(ex.Message);
             }
         }
 
         public void SaveStudent(Student student)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (student is null)
+                    throw new StudentDaoExceptions("la clase debe de ser instaciada.");
+
+
+                this.schoolDb.Students.Add(student);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new StudentDaoExceptions(ex.Message);
+            }
+
+
         }
 
         public void UpdateStudent(Student student)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Student? studentToUpdate = this.schoolDb.Students.Find(student.Id);
+
+                if (studentToUpdate is null)
+                    throw new StudentDaoExceptions("El estudiante no se encuentra registrado.");
+
+
+                studentToUpdate.Modifydate = student.Modifydate;
+                studentToUpdate.UserMod = student.UserMod;
+                studentToUpdate.Id = student.Id;
+                studentToUpdate.LastName = student.LastName;
+                studentToUpdate.FirstName = student.FirstName;
+                studentToUpdate.EnrollmentDate = student.EnrollmentDate.Value;
+
+
+                this.schoolDb.Students.Update(studentToUpdate);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new StudentDaoExceptions(ex.Message);
+            }
+
+
+
         }
     }
 }

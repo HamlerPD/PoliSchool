@@ -10,12 +10,12 @@ namespace PoliSchool.DAL.Interfaces
 
     {
         void SaveDeparment(Deparment deparment);
-        void UpdateStudent(Deparment deparment);
-        void RemoveStudent(Deparment deparment);
+        void UpdateDeparment(Deparment deparment);
+        void RemoveDeparment(Deparment deparment);
 
-        List<Student> GetDeparments();
+        List<DeparmentModel> GetDeparments();
 
-        StudentModel GetDeparment(int deparmentId);
+        DeparmentModel GetDeparmentById(int deparmentId);
 
 
     }

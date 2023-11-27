@@ -4,7 +4,7 @@ namespace PoliSchool.DAL.Models
 {
     public class DeparmentModel
     {
-        public int Id { get; set; }
+        public int DepartmentID { get; set; }
         public string? Name { get; set; }
 
         public DateTime StartDate { get; set; }
