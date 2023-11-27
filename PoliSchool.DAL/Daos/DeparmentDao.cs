@@ -43,7 +43,26 @@ namespace PoliSchool.DAL.Daos
 
         public List<DeparmentModel> GetDeparments()
         {
-            throw new NotImplementedException();
+            List<DeparmentModel> course = new List<DeparmentModel>();
+            try
+            {
+                var query = from de in this.schoolDb.Deparments
+                            where de.Deleted == false
+                            select new DeparmentModel()
+                            {
+                                Creationdate = de.Creationdate,
+                                StartDate = de.StartDate.Value,
+                                DepartmentID = de.DepartmentID.Value,
+                                Name = de.Name,
+                                Administrator = de.Administrator,
+                            };
+
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
+            return course;
         }
 
         public void RemoveDeparment(Deparment deparment)
