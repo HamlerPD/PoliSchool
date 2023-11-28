@@ -39,7 +39,7 @@ namespace PoliSchool.DAL.Daos
             return model;
         }
 
-        public List<InstructorModel> GetStudents()
+        public List<InstructorModel> GetInstructors()
         {
             List<InstructorModel> instructors = new List<InstructorModel>();
             try

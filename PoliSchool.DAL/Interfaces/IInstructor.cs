@@ -14,7 +14,7 @@ namespace PoliSchool.DAL.Interfaces
         void UpdateInstructor(Instructor instructor);
         void RemoveInstructor(Instructor instructor);
 
-        List<InstructorModel> GetStudents();
+        List<InstructorModel> GetInstructors();
 
         InstructorModel GetInstructorById(int instructorId);
     }

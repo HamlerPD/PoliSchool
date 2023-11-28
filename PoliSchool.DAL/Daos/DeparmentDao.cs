@@ -43,7 +43,7 @@ namespace PoliSchool.DAL.Daos
 
         public List<DeparmentModel> GetDeparments()
         {
-            List<DeparmentModel> course = new List<DeparmentModel>();
+            List<DeparmentModel> deparment = new List<DeparmentModel>();
             try
             {
                 var query = from de in this.schoolDb.Deparments
@@ -60,9 +60,9 @@ namespace PoliSchool.DAL.Daos
             }
             catch (Exception ex)
             {
-                throw new CourseDaoExceptions(ex.Message);
+                throw new DeparmentDaoExceptions(ex.Message);
             }
-            return course;
+            return deparment;
         }
 
         public void RemoveDeparment(Deparment deparment)
@@ -74,7 +74,7 @@ namespace PoliSchool.DAL.Daos
                 Deparment? deparmentToRemove = this.schoolDb.Deparments.Find(deparment.DepartmentID);
 
                 if (deparmentToRemove == null)
-                    throw new CourseDaoExceptions(" El curso no se encuentra registrado ");
+                    throw new DeparmentDaoExceptions(" El curso no se encuentra registrado ");
                 deparmentToRemove.Deleted = deparment.Deleted;
                 deparmentToRemove.DeletedDate = deparment.DeletedDate;
                 deparmentToRemove.UserDeleted = deparment.UserDeleted;
@@ -84,7 +84,7 @@ namespace PoliSchool.DAL.Daos
             }
             catch (Exception ex)
             {
-                throw new CourseDaoExceptions(ex.Message);
+                throw new DeparmentDaoExceptions(ex.Message);
             }
         }
 
@@ -101,7 +101,7 @@ namespace PoliSchool.DAL.Daos
             }
             catch (Exception ex)
             {
-                throw new StudentDaoExceptions(ex.Message);
+                throw new DeparmentDaoExceptions(ex.Message);
             }
 
         }
@@ -131,7 +131,7 @@ namespace PoliSchool.DAL.Daos
             catch (Exception ex)
             {
 
-                throw new StudentDaoExceptions(ex.Message);
+                throw new DeparmentDaoExceptions(ex.Message);
             }
         }
 
