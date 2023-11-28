@@ -67,17 +67,72 @@ namespace PoliSchool.DAL.Daos
 
         public void RemoveDeparment(Deparment deparment)
         {
-            throw new NotImplementedException();
+
+            DeparmentModel model = new DeparmentModel();
+            try
+            {
+                Deparment? deparmentToRemove = this.schoolDb.Deparments.Find(deparment.DepartmentID);
+
+                if (deparmentToRemove == null)
+                    throw new CourseDaoExceptions(" El curso no se encuentra registrado ");
+                deparmentToRemove.Deleted = deparment.Deleted;
+                deparmentToRemove.DeletedDate = deparment.DeletedDate;
+                deparmentToRemove.UserDeleted = deparment.UserDeleted;
+
+                this.schoolDb.Deparments.Update(deparmentToRemove);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
         }
 
         public void SaveDeparment(Deparment deparment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (deparment is null)
+                    throw new DeparmentDaoExceptions("El deparmento debe de ser instaciada.");
+
+
+                this.schoolDb.Deparments.Add(deparment);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new StudentDaoExceptions(ex.Message);
+            }
+
         }
 
         public void UpdateDeparment(Deparment deparment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Deparment? deparmentToUpdate = this.schoolDb.Deparments.Find(deparment.DepartmentID);
+
+                if (deparmentToUpdate is null)
+                    throw new DeparmentDaoExceptions("El deparmento no se encuentra registrado.");
+
+
+                deparmentToUpdate.Modifydate = deparment.Modifydate;
+                deparmentToUpdate.UserMod = deparment.UserMod;
+                deparmentToUpdate.DepartmentID = deparment.DepartmentID;
+                deparmentToUpdate.Name = deparment.Name;
+                deparmentToUpdate.Administrator = deparment.Administrator;
+                deparmentToUpdate.Creationdate = deparment.Creationdate;
+                deparmentToUpdate.StartDate = deparment.StartDate.Value;
+
+
+                this.schoolDb.Deparments.Update(deparmentToUpdate);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new StudentDaoExceptions(ex.Message);
+            }
         }
 
     }
