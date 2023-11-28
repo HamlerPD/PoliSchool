@@ -41,22 +41,94 @@ namespace PoliSchool.DAL.Daos
 
         public List<InstructorModel> GetStudents()
         {
-            throw new NotImplementedException();
+            List<InstructorModel> instructors = new List<InstructorModel>();
+            try
+            {
+                var query = from ins in this.schoolDb.Instructors
+                            where ins.Deleted == false
+                            select new InstructorModel()
+                            {
+                                Creationdate = ins.Creationdate,
+                                HireDate = ins.HireDate,
+                                Id= ins.Id,
+                                Name = string.Concat(ins.FirstName, " ", ins.LastName)
+
+                            };
+
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
+            return instructors;
         }
 
         public void RemoveInstructor(Instructor instructor)
         {
-            throw new NotImplementedException();
+            InstructorModel model = new InstructorModel();
+            try
+            {
+                Instructor? instructorToRemove = this.schoolDb.Instructors.Find(instructor.Id);
+
+                if (instructorToRemove is null)
+                    throw new InstructorDaoExceptions(" El instructor no se encuentra registrado ");
+                instructorToRemove.Deleted = instructor.Deleted;
+                instructorToRemove.DeletedDate = instructor.DeletedDate;
+                instructorToRemove.UserDeleted = instructor.UserDeleted;
+
+                this.schoolDb.Instructors.Update(instructorToRemove);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
         }
 
         public void SaveInstructor(Instructor instructor)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (instructor is null)
+                    throw new InstructorDaoExceptions("El instructor debe de ser instaciada.");
+
+
+                this.schoolDb.Instructors.Add(instructor);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new StudentDaoExceptions(ex.Message);
+            }
         }
 
         public void UpdateInstructor(Instructor instructor)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Instructor? instructorToUpdate = this.schoolDb.Instructors.Find(instructor.Id);
+
+                if (instructorToUpdate is null)
+                    throw new InstructorDaoExceptions("El deparmento no se encuentra registrado.");
+
+
+                instructorToUpdate.Modifydate = instructor.Modifydate;
+                instructorToUpdate.UserMod = instructor.UserMod;
+                instructorToUpdate.Id = instructor.Id;
+                instructorToUpdate.FirstName = instructor.FirstName;
+                instructorToUpdate.LastName = instructor.LastName;
+                instructorToUpdate.Creationdate = instructor.Creationdate;
+                instructorToUpdate.HireDate = instructor.HireDate.Value;
+
+
+                this.schoolDb.Instructors.Update(instructorToUpdate);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new StudentDaoExceptions(ex.Message);
+            }
         }
     }
 }
