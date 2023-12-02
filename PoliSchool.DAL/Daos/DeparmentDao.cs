@@ -24,7 +24,7 @@ namespace PoliSchool.DAL.Daos
             {
                 Deparment? deparment = schoolDb.Deparments.Find(deparmentId);
                 if (deparment is null)
-                    throw new DeparmentDaoExceptions(" El estudiante no se encuentra registrado");
+                    throw new DeparmentDaoExceptions(" El departamento no se encuentra registrado");
                 model.Creationdate = deparment.Creationdate;
                 model.StartDate = deparment.StartDate.Value;
                 model.DepartmentID = deparment.DepartmentID.Value;
