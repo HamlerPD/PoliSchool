@@ -2,7 +2,7 @@
 
 namespace PoliSchool.DAL.Entities
 {
-    public class Deparment : BaseEntity
+    public partial class Deparment : BaseEntity
     {
         public int? DepartmentID { get; set; }
         public string? Name { get; set; }

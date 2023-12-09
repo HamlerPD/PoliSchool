@@ -7,6 +7,7 @@ namespace PoliSchool.DAL.Entities
     [Table("OfficeAssignment")]
     public partial class OfficeAssignment : BaseEntity
     {
+        
         public int InstructorId { get; set; }
         public string? Location { get; set; }
         public byte[]? Timestamp { get; set; }

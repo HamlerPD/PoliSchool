@@ -1,5 +1,6 @@
 ﻿
 using PoliSchool.DAL.Entities.Base;
+
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PoliSchool.DAL.Entities

@@ -28,7 +28,10 @@ namespace PoliSchool.DAL.Daos
                 model.Creationdate = student.Creationdate;
                 model.EnrollmentDate = student.EnrollmentDate.Value;
                 model.Id = student.Id;
-                model.Name = string.Concat(student.FirstName, " ", student.LastName);
+                model.FirstName = student.FirstName;
+                model.LastName = student.LastName;
+
+
 
 
 
@@ -54,7 +57,8 @@ namespace PoliSchool.DAL.Daos
                                 Creationdate = st.Creationdate,
                                 EnrollmentDate = st.EnrollmentDate.Value,
                                 Id = st.Id,
-                                Name = string.Concat(st.FirstName, " ", st.LastName)
+                                FirstName = st.FirstName,
+                                LastName = st.LastName
                             };
 
 
