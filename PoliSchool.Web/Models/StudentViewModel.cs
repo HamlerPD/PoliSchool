@@ -8,7 +8,13 @@
 
         public DateTime EnrollmentDate { get; set; }
 
-        public string Name => string.Concat(this.FirstName, " ", this.LastName);
+        public string Name
+        {
+            get
+            {
+                return string.Concat(this.FirstName, " ", this.LastName);
+            }
+        }
     }
 }
             

@@ -15,9 +15,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.Student" Collapsed="true">
-    <Position X="2.5" Y="3.5" Width="1.5" />
+    <Position X="2" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,37 +36,37 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.Instructor" Collapsed="true">
-    <Position X="3" Y="2.5" Width="1.5" />
+    <Position X="3.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Instructor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.OfficeAssignment" Collapsed="true">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAICAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\OfficeAssignment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.OnlineCourse" Collapsed="true">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Entities\OnlineCourse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.OnsiteCourse" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="6.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAQA=</HashCode>
       <FileName>Entities\OnsiteCourse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PoliSchool.DAL.Entities.StudentGrade" Collapsed="true">
-    <Position X="10" Y="2.25" Width="1.5" />
+    <Position X="5.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAECAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAECAAA=</HashCode>
       <FileName>Entities\StudentGrade.cs</FileName>
     </TypeIdentifier>
   </Class>

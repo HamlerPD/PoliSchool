@@ -68,7 +68,7 @@ namespace PoliSchool.DAL.Daos
             }
             catch (Exception ex)
             {
-                throw new StudentDaoExceptions(ex.Message);
+              
             }
             return students;
         }

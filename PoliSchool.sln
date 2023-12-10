@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliSchool.DAL", "PoliSchoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliSchool.BL", "PoliSchool.BL\PoliSchool.BL.csproj", "{0BBC5B24-85C6-4F93-A6D3-B5905ECCA175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliSchool.WebCourse", "PoliSchool.WebCourse\PoliSchool.WebCourse.csproj", "{80983B11-A554-4862-9CFF-FD68A539D6CF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{0BBC5B24-85C6-4F93-A6D3-B5905ECCA175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BBC5B24-85C6-4F93-A6D3-B5905ECCA175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BBC5B24-85C6-4F93-A6D3-B5905ECCA175}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80983B11-A554-4862-9CFF-FD68A539D6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80983B11-A554-4862-9CFF-FD68A539D6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80983B11-A554-4862-9CFF-FD68A539D6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80983B11-A554-4862-9CFF-FD68A539D6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

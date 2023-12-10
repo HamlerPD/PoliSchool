@@ -8,7 +8,7 @@ using PoliSchool.DAL.Models;
 
 namespace PoliSchool.DAL.Daos
 {
-    internal class CourseDao : ICourseDao
+    public class CourseDao : ICourseDao
     {
 
         private readonly SchoolDbContext schoolDb;
@@ -59,7 +59,7 @@ namespace PoliSchool.DAL.Daos
             }
             catch(Exception ex)
             {
-                throw new CourseDaoExceptions(ex.Message);
+                
             }
             return course;
         } 

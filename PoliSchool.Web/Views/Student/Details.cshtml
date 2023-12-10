@@ -16,13 +16,14 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            Nombre
+           Nombre
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
+        </dd>
         <dt class = "col-sm-2">
-            Fecha de inscripcion
+           Fecha de Inscripcion
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EnrollmentDate)
@@ -30,6 +31,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Editar", "Edit", new {  id = Model.Id }) |
+    @Html.ActionLink("Editar", "Edit", new {id = Model.Id }) |
     <a asp-action="Index">Volver a la Lista</a>
 </div>

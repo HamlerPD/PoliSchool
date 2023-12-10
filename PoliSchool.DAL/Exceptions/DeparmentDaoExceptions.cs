@@ -6,7 +6,7 @@ namespace PoliSchool.DAL.Exceptions
     {
         public DeparmentDaoExceptions(string message) : base(message)
         {
-
+            // aplicar x logica //
         }
     }
 }

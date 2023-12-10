@@ -7,11 +7,11 @@ using PoliSchool.Web.Models;
 
 namespace PoliSchool.Web.Controllers
 {
-    public class StudentController1 : Controller
+    public class StudentController : Controller
     {
         private readonly IStudentDao studentDao;
 
-        public StudentController1(IStudentDao studentDao)
+        public StudentController(IStudentDao studentDao)
         {
             this.studentDao = studentDao;
         }

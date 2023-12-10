@@ -14,6 +14,26 @@ builder.Services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(b
 //Agregar contenedor de Dao(Student)
 builder.Services.AddTransient<IStudentDao, StudentDao>();
 
+//Agregar contenedor de Dao(Course)
+builder.Services.AddTransient<ICourseDao, CourseDao>();
+
+//Agregar contenedor de Dao(Deparment)
+builder.Services.AddTransient<IDeparment, DeparmentDao>();
+
+//Agregar contenedor de Dao(Instructor)
+builder.Services.AddTransient<IInstructor, InstructorDao>();
+
+//Agregar contenedor de Dao(OfficeAssignment)
+builder.Services.AddTransient<IOfficeAssignment, OfficeAssignmentDao>();
+
+//Agregar contenedor de Dao(OnlineCourse)
+builder.Services.AddTransient<IOnlineCourseDao, OnlineCourseDao>();
+
+//Agregar contenedor de Dao(OnsiteCourse)
+builder.Services.AddTransient<IOnsiteCourse, OnsiteCourseDao>();
+
+//Agregar contenedor de Dao(IStudentGrade)
+builder.Services.AddTransient<IStudentGradeDao, StudentGradeDao>();
 
 var app = builder.Build();
 
