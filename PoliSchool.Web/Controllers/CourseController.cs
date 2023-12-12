@@ -82,9 +82,22 @@ namespace PoliSchool.Web.Controllers
         }
 
         // GET: CourseController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int courseId)
         {
-            return View();
+            var courseModel = this.courseDao.GetCourseById(courseId);
+            CourseListModel courseListModel = new CourseListModel()
+            {
+                CourseId= courseModel.CourseId,
+                Title = courseModel.Title, 
+                DepartmentId = courseModel.DepartmentId, 
+                Credits = courseModel.Credits, 
+                Creationdate = courseModel.Creationdate,
+                
+            };
+
+            return View(courseListModel);
+
+        
         }
 
         // POST: CourseController/Edit/5
