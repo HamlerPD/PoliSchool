@@ -65,6 +65,8 @@ namespace PoliSchool.Web.Controllers
                     CreationUser = 1
 
                 };
+
+                this.studentDao.SaveStudent(studentToAdd);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PoliSchool.DAL.Daos;
 using PoliSchool.DAL.Entities;
 using PoliSchool.DAL.Interfaces;
+using PoliSchool.Web.Models;
 
 namespace PoliSchool.Web.Controllers
 {
@@ -45,17 +47,33 @@ namespace PoliSchool.Web.Controllers
         // GET: CourseController/Create
         public ActionResult Create()
         {
+            var departments = this.departmentDao.GetDeparments();
+            ViewData["Departments"] = new SelectList(departments, "DepartmentId", "Name", "Title");
+
             return View();
         }
 
         // POST: CourseController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CourseListModel courseView)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Course courseToAdd = new Course()
+                {
+                     CourseId= courseView.CourseId,
+                     Title = courseView.Title,
+                     DepartmentId = courseView.DepartmentId,
+                     Credits = courseView.Credits,
+                     Creationdate = courseView.Creationdate,
+
+
+                };
+
+               
+                this.courseDao.SaveCourse(courseToAdd);
+                return RedirectToAction(nameof(Index)); ;
             }
             catch
             {

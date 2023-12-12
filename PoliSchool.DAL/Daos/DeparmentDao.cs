@@ -58,9 +58,9 @@ namespace PoliSchool.DAL.Daos
                             };
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new DeparmentDaoExceptions(ex.Message);
+                
             }
             return deparment;
         }

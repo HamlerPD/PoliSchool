@@ -52,6 +52,7 @@ namespace PoliSchool.DAL.Daos
             {
                 var query = from st in this.schoolDb.Students
                             where st.Deleted == false
+                            orderby st.Creationdate descending
                             select new StudentModel()
                             {
                                 Creationdate = st.Creationdate,
@@ -66,9 +67,9 @@ namespace PoliSchool.DAL.Daos
                         
                           
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-              
+                
             }
             return students;
         }

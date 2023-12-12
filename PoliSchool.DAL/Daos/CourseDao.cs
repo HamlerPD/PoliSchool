@@ -86,6 +86,21 @@ namespace PoliSchool.DAL.Daos
             }
         }
 
-        
+        public void SaveCourse(Course course)
+        {
+            try
+            {
+                if (course is null)
+                    throw new CourseDaoExceptions("El curso debe de ser instaciada.");
+
+
+                this.schoolDb.Courses.Add(course);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new CourseDaoExceptions(ex.Message);
+            }
+        }
     }
 }

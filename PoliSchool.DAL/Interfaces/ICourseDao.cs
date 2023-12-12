@@ -11,6 +11,7 @@ namespace PoliSchool.DAL.Interfaces
 
         CourseModel GetCourseById(int courseId);
 
+        void SaveCourse(Course course);
 
     }
 }
