@@ -22,7 +22,7 @@ namespace PoliSchool.Web.Controllers
         // GET: CourseController
         public ActionResult Index()
         {
-            var courses = this.courseDao.GetCourses().Select(co => new Models.CourseListModel()
+            var course = this.courseDao.GetCourses().Select(co => new Models.CourseListModel()
             {
                 CourseId = co.CourseId,
                 CreationdateDisplay= co.CreationdateDisplay,
@@ -35,7 +35,7 @@ namespace PoliSchool.Web.Controllers
 
                
             });
-            return View(courses);
+            return View(course);
         }
 
         // GET: CourseController/Details/5
@@ -103,12 +103,29 @@ namespace PoliSchool.Web.Controllers
         // POST: CourseController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(CourseListModel courseListModel)
         {
             try
             {
+                Course courseToUpdate = new Course()
+                {
+                    CourseId = courseListModel.CourseId,
+                    Title = courseListModel.Title, 
+                    DepartmentId = courseListModel.DepartmentId, 
+                    Credits = courseListModel.Credits,
+                    Creationdate = courseListModel.Creationdate,
+                    Modifydate = DateTime.Now,
+                    UserMod = 1
+
+
+                };
+
+                this.courseDao.UpdateCourse(courseToUpdate);
+
                 return RedirectToAction(nameof(Index));
+
             }
+
             catch
             {
                 return View();

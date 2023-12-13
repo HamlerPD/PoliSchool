@@ -13,5 +13,7 @@ namespace PoliSchool.DAL.Interfaces
 
         void SaveCourse(Course course);
 
+        void UpdateCourse(Course course);
+
     }
 }

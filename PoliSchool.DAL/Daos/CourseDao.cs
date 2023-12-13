@@ -102,5 +102,33 @@ namespace PoliSchool.DAL.Daos
                 throw new CourseDaoExceptions(ex.Message);
             }
         }
+
+        public void UpdateCourse(Course course)
+        {
+            try
+            {
+                Course? courseToUpdate = this.schoolDb.Courses.Find(course.CourseId);
+
+                if (courseToUpdate is null)
+                    throw new CourseDaoExceptions("El Curso no se encuentra registrado.");
+
+
+
+                courseToUpdate.Title = course.Title;
+                courseToUpdate.Modifydate = course.Modifydate;
+                courseToUpdate.UserMod = course.UserMod;
+                courseToUpdate.CourseId = course.CourseId;
+                courseToUpdate.Creationdate = course.Creationdate;
+
+
+                this.schoolDb.Courses.Update(courseToUpdate);
+                this.schoolDb.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new StudentDaoExceptions(ex.Message);
+            }
+        }
     }
 }

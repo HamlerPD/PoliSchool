@@ -44,15 +44,7 @@ namespace PoliSchool.DAL.Daos
             List<OfficeAssignmentModel> officeAssignment = new List<OfficeAssignmentModel>();
             try
             {
-                var query = from off in this.schoolDb.OfficeAssignments
-                            where off.Deleted == false
-                            select new OfficeAssignmentModel()
-                            {
-                                InstructorId = off.InstructorId,
-                                Location = off.Location,
-                                Timestamp = off.Timestamp,
-                                
-                            };
+          
 
 
             }
@@ -73,10 +65,7 @@ namespace PoliSchool.DAL.Daos
 
                 if (officeAssignmentToRemove == null)
                     throw new OfficeAssignmentDaoExceptions(" La oficina no se encuentra registrada ");
-                officeAssignmentToRemove.Deleted = officeAssignment.Deleted;
-                officeAssignmentToRemove.DeletedDate = officeAssignment.DeletedDate;
-                officeAssignmentToRemove.UserDeleted = officeAssignment.UserDeleted;
-
+                
                 this.schoolDb.OfficeAssignments.Update(officeAssignmentToRemove);
                 this.schoolDb.SaveChanges();
             }
@@ -113,8 +102,7 @@ namespace PoliSchool.DAL.Daos
                     throw new OfficeAssignmentDaoExceptions("La oficina no se encuentra registrada.");
 
 
-                OfficeAssigmentToUpdate.Modifydate = officeAssignment.Modifydate;
-                OfficeAssigmentToUpdate.UserMod = officeAssignment.UserMod;
+                
                 OfficeAssigmentToUpdate.InstructorId = officeAssignment.InstructorId;
                 OfficeAssigmentToUpdate.Timestamp = officeAssignment.Timestamp;
                 OfficeAssigmentToUpdate.Location = officeAssignment.Location;
