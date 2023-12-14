@@ -8,17 +8,17 @@ namespace PoliSchool.Web.Controllers
     public class DeparmentController : Controller
     {
 
-        private readonly IDeparment deparment;
+        private readonly IDeparment deparmentDao;
 
-        public DeparmentController(IDeparment deparment)
+        public DeparmentController(IDeparment deparmentDao)
         {
-            this.deparment = deparment;
+            this.deparmentDao = deparmentDao;
         }
 
         // GET: DeparmentControllerController
         public ActionResult Index()
         {
-            var deparments = this.deparment.GetDeparments().Select(de => new Models.DeparmentListModel()
+            var deparments = this.deparmentDao.GetDeparments().Select(de => new Models.DeparmentListModel()
             {
                 DepartmentID = de.DepartmentID,
                 Name = de.Name,
@@ -33,7 +33,7 @@ namespace PoliSchool.Web.Controllers
         // GET: DeparmentControllerController/Details/5
         public ActionResult Details(int Id)
         {
-            var deparmentModel = this.deparment.GetDeparmentById(Id);
+            var deparmentModel = this.deparmentDao.GetDeparmentById(Id);
             DeparmentListModel deparment = new DeparmentListModel()
             {
                 DepartmentID = deparmentModel.DepartmentID,

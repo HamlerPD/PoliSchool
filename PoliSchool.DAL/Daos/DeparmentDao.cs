@@ -22,17 +22,16 @@ namespace PoliSchool.DAL.Daos
             DeparmentModel model = new DeparmentModel();
             try
             {
-                Deparment? deparment = schoolDb.Deparments.Find(Id);
-                if (deparment is null)
-                    throw new DeparmentDaoExceptions(" El departamento no se encuentra registrado");
-                model.Creationdate = deparment.Creationdate;
-                model.StartDate = deparment.StartDate.Value;
-                model.DepartmentID = deparment.DepartmentID.Value;
+               Deparment? deparment = schoolDb.Deparments.Find(Id);
+
+                if (deparment == null)
+
+                    throw new DeparmentDaoExceptions(" El Deparmenton no se encuentra registrado ");
+                model.DepartmentID = deparment.DepartmentID;
                 model.Name = deparment.Name;
-                model.Administrator = deparment.Administrator;
-
-
-
+                model.StartDate = deparment.StartDate.Value;
+                model.Creationdate = deparment.Creationdate;
+           
             }
             catch (Exception ex)
             {
@@ -53,16 +52,17 @@ namespace PoliSchool.DAL.Daos
                             {
                                 Creationdate = de.Creationdate,
                                 StartDate = de.StartDate.Value,
-                                DepartmentID = de.DepartmentID.Value,
+                                DepartmentID = de.DepartmentID,
                                 Name = de.Name,
                                 Administrator = de.Administrator,
                             };
-                    deparment = query.ToList();
+                         
+                            deparment = query.ToList();
 
             }
             catch (Exception)
             {
-               
+                
             }
             return deparment;
         }

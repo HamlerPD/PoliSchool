@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PoliSchool.DAL.Interfaces;
+using PoliSchool.Web.Models;
 
 namespace PoliSchool.Web.Controllers
 {
@@ -30,7 +31,16 @@ namespace PoliSchool.Web.Controllers
         // GET: StudentGradeController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var studentGradeModel = this.studentGradeDao.GetStudentGradeById(id);
+            StudentGradeModel studentGrade = new StudentGradeModel()
+            {
+                EnrollmentId = studentGradeModel.EnrollmentId, 
+                CourseId = studentGradeModel.CourseId, 
+                StudentId = studentGradeModel.StudentId, 
+                Grade = studentGradeModel.Grade
+            };
+            return View(studentGrade);
+           
         }
 
         // GET: StudentGradeController/Create

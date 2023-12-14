@@ -25,7 +25,6 @@ namespace PoliSchool.Web.Controllers
             var course = this.courseDao.GetCourses().Select(co => new Models.CourseListModel()
             {
                 CourseId = co.CourseId,
-                CreationdateDisplay = co.CreationdateDisplay,
                 Title = co.Title,
                 Creationdate = co.Creationdate,
                 DepartmentId = co.DepartmentId,
