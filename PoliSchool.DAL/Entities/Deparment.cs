@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PoliSchool.DAL.Entities
 {
 
-    [Table("Deparment")]
+  
     public partial class Deparment : BaseEntity
     {
         [Key]

@@ -20,26 +20,25 @@ namespace PoliSchool.Web.Controllers
         {
             var deparments = this.deparment.GetDeparments().Select(de => new Models.DeparmentListModel()
             {
-                DepartmentID = de.DepartmentID, 
-                Name = de.Name, 
-                StartDate = de.StartDate, 
+                DepartmentID = de.DepartmentID,
+                Name = de.Name,
+                StartDate = de.StartDate,
                 Administrator = de.Administrator,
-                Creationdate = de.Creationdate
-
+                Creationdate = de.Creationdate,
             }).ToList();
             return View(deparments);
 
         }
 
         // GET: DeparmentControllerController/Details/5
-        public ActionResult Details(int deparmentId)
+        public ActionResult Details(int Id)
         {
-            var deparmentModel = this.deparment.GetDeparmentById(deparmentId);
+            var deparmentModel = this.deparment.GetDeparmentById(Id);
             DeparmentListModel deparment = new DeparmentListModel()
             {
-                DepartmentID = deparmentModel.DepartmentID, 
-                Creationdate = deparmentModel.Creationdate, 
-                Name = deparmentModel.Name, 
+                DepartmentID = deparmentModel.DepartmentID,
+                Creationdate = deparmentModel.Creationdate,
+                Name = deparmentModel.Name,
                 StartDate = deparmentModel.StartDate
             };
             return View(deparment);

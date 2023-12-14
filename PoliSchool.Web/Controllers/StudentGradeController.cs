@@ -1,14 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Interfaces;
 
 namespace PoliSchool.Web.Controllers
 {
     public class StudentGradeController : Controller
     {
+        private readonly IStudentGradeDao studentGradeDao;
+
+        public StudentGradeController(IStudentGradeDao studentGradeDao)
+        {
+            this.studentGradeDao = studentGradeDao;
+        }
+
         // GET: StudentGradeController
         public ActionResult Index()
         {
-            return View();
+            var studentGrade = this.studentGradeDao.GetStudentGrades().Select(cd => new Models.StudentGradeModel()
+            {
+                EnrollmentId = cd.EnrollmentId, 
+                CourseId = cd.CourseId, 
+                Grade = cd.Grade, 
+                StudentId = cd.StudentId
+
+            }).ToList();
+            return View(studentGrade);
         }
 
         // GET: StudentGradeController/Details/5

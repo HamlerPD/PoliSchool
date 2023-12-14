@@ -39,9 +39,9 @@ namespace PoliSchool.Web.Controllers
         }
 
         // GET: CourseController/Details/5
-        public ActionResult Details(int courseId)
+        public ActionResult Details(int Id)
         {
-            var courseModel = this.courseDao.GetCourseById(courseId);
+            var courseModel = this.courseDao.GetCourseById(Id);
             CourseListModel course = new CourseListModel()
             {
                 CourseId = courseModel.CourseId,
