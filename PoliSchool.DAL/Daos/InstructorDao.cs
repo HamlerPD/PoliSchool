@@ -54,11 +54,12 @@ namespace PoliSchool.DAL.Daos
                                 Name = string.Concat(ins.FirstName, " ", ins.LastName)
 
                             };
+                instructors = query.ToList();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new CourseDaoExceptions(ex.Message);
+               
             }
             return instructors;
         }

@@ -48,6 +48,7 @@ namespace PoliSchool.DAL.Daos
             {
                 var query = from de in this.schoolDb.Deparments
                             where de.Deleted == false
+                            orderby de.Creationdate descending
                             select new DeparmentModel()
                             {
                                 Creationdate = de.Creationdate,
@@ -56,6 +57,7 @@ namespace PoliSchool.DAL.Daos
                                 Name = de.Name,
                                 Administrator = de.Administrator,
                             };
+                    deparment = query.ToList();
 
             }
             catch (Exception)

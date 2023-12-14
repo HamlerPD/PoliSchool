@@ -51,15 +51,15 @@ namespace PoliSchool.DAL.Daos
                                 Url = Onl.Url,
 
                             };
-
+                onlineCourses = query.ToList();
 
 
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new OnlineCourseDaoExceptions(ex.Message);
+                
             }
             return onlineCourses;
         }

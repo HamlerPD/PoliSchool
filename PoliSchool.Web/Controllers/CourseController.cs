@@ -11,12 +11,12 @@ namespace PoliSchool.Web.Controllers
     public class CourseController : Controller
     {
         private readonly ICourseDao courseDao;
-        private readonly IDeparment departmentDao;
+       
 
-        public CourseController(ICourseDao courseDao, IDeparment departmentDao)
+        public CourseController(ICourseDao courseDao)
         {
             this.courseDao = courseDao;
-            this.departmentDao = departmentDao;
+            
         }
 
         // GET: CourseController
@@ -25,7 +25,7 @@ namespace PoliSchool.Web.Controllers
             var course = this.courseDao.GetCourses().Select(co => new Models.CourseListModel()
             {
                 CourseId = co.CourseId,
-                CreationdateDisplay= co.CreationdateDisplay,
+                CreationdateDisplay = co.CreationdateDisplay,
                 Title = co.Title,
                 Creationdate = co.Creationdate,
                 DepartmentId = co.DepartmentId,
@@ -33,22 +33,28 @@ namespace PoliSchool.Web.Controllers
                 DepartmentName = co.DepartmentName,
                 Name = co.Name,
 
-               
-            });
+
+            }).ToList();
             return View(course);
         }
 
         // GET: CourseController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int courseId)
         {
-            return View();
+            var courseModel = this.courseDao.GetCourseById(courseId);
+            CourseListModel course = new CourseListModel()
+            {
+                CourseId = courseModel.CourseId,
+                Title= courseModel.Title,
+                Creationdate = courseModel.Creationdate
+            };
+            return View(course);
         }
 
         // GET: CourseController/Create
         public ActionResult Create()
         {
-            var departments = this.departmentDao.GetDeparments();
-            ViewData["Departments"] = new SelectList(departments, "DepartmentId", "Name", "Title");
+          
 
             return View();
         }

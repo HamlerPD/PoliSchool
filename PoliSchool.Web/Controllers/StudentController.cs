@@ -40,7 +40,7 @@ namespace PoliSchool.Web.Controllers
                 Id = studentsmodel.Id,
                 Name = studentsmodel.Name
             };
-            return View();
+            return View(student);
         }
 
         // GET: StudentController1/Create

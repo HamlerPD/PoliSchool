@@ -1,20 +1,49 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Interfaces;
+using PoliSchool.Web.Models;
 
 namespace PoliSchool.Web.Controllers
 {
     public class DeparmentController : Controller
     {
+
+        private readonly IDeparment deparment;
+
+        public DeparmentController(IDeparment deparment)
+        {
+            this.deparment = deparment;
+        }
+
         // GET: DeparmentControllerController
         public ActionResult Index()
         {
-            return View();
+            var deparments = this.deparment.GetDeparments().Select(de => new Models.DeparmentListModel()
+            {
+                DepartmentID = de.DepartmentID, 
+                Name = de.Name, 
+                StartDate = de.StartDate, 
+                Administrator = de.Administrator,
+                Creationdate = de.Creationdate
+
+            }).ToList();
+            return View(deparments);
+
         }
 
         // GET: DeparmentControllerController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int deparmentId)
         {
-            return View();
+            var deparmentModel = this.deparment.GetDeparmentById(deparmentId);
+            DeparmentListModel deparment = new DeparmentListModel()
+            {
+                DepartmentID = deparmentModel.DepartmentID, 
+                Creationdate = deparmentModel.Creationdate, 
+                Name = deparmentModel.Name, 
+                StartDate = deparmentModel.StartDate
+            };
+            return View(deparment);
+
         }
 
         // GET: DeparmentControllerController/Create
@@ -39,7 +68,7 @@ namespace PoliSchool.Web.Controllers
         }
 
         // GET: DeparmentControllerController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int courseId)
         {
             return View();
         }

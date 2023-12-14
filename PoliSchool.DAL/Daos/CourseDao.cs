@@ -33,9 +33,9 @@ namespace PoliSchool.DAL.Daos
                 model.Title = course.Title;
                 model.Credits = course.Credits;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                throw new CourseDaoExceptions(ex.Message);
+                
             }
             return model;
         }
@@ -55,9 +55,11 @@ namespace PoliSchool.DAL.Daos
                                 Title = co.Title,
                                 Credits = co.Credits,
                             };
+                           
+                            course = query.ToList();
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 
             }

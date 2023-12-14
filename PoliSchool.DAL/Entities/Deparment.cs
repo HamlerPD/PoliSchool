@@ -1,8 +1,11 @@
 ﻿using PoliSchool.DAL.Entities.Base;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PoliSchool.DAL.Entities
 {
+
+    [Table("Deparment")]
     public partial class Deparment : BaseEntity
     {
         [Key]
