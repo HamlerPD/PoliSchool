@@ -16,5 +16,7 @@ namespace PoliSchool.DAL.Models
             get { return this.Creationdate.ToString("dd/mm/yyyy"); }
         }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

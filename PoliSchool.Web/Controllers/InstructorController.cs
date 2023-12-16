@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Entities;
 using PoliSchool.DAL.Interfaces;
 using PoliSchool.Web.Models;
 
@@ -50,10 +51,23 @@ namespace PoliSchool.Web.Controllers
         // POST: InstructorController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(InstructorViewModel instructorView)
         {
             try
             {
+                Instructor InstructorToAdd = new Instructor()
+                {
+                    FirstName = instructorView.FirstName,
+                    LastName = instructorView.LastName, 
+                    HireDate = instructorView.HireDate, 
+                    CreationUser = 1,
+                    Id = instructorView.Id
+                    
+                    
+
+                };
+
+                this.instructorDao.SaveInstructor(InstructorToAdd);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -65,37 +79,42 @@ namespace PoliSchool.Web.Controllers
         // GET: InstructorController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var InstructorModel = this.instructorDao.GetInstructorById(id);
+            InstructorViewModel instructorViewModel = new InstructorViewModel()
+            {
+                HireDate = InstructorModel.HireDate, 
+                FirstName = InstructorModel.FirstName,
+                LastName = InstructorModel.LastName, 
+                Id = InstructorModel.Id
+
+
+            };
+
+            return View(instructorViewModel);
+          
         }
 
         // POST: InstructorController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(InstructorViewModel instructorView)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                Instructor instructorToUpdate = new Instructor()
+                {
+                    Id = instructorView.Id, 
+                    HireDate = instructorView.HireDate, 
+                    FirstName = instructorView.FirstName, 
+                    LastName = instructorView.LastName,
+                    Modifydate = DateTime.Now,
+                    UserMod = 1
 
-        // GET: InstructorController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: InstructorController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
+                };
+
+                this.instructorDao.UpdateInstructor(instructorToUpdate);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
