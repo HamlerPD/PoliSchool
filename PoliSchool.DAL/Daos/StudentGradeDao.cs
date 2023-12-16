@@ -119,8 +119,7 @@ namespace PoliSchool.DAL.Daos
                     throw new StudentGradeDaoExceptions("El grado no se encuentra registrado.");
 
 
-                studentGradeToUpdate.Modifydate = studentGrade.Modifydate;
-                studentGradeToUpdate.UserMod = studentGrade.UserMod;
+      
                 studentGradeToUpdate.CourseId = studentGrade.CourseId;
                 studentGradeToUpdate.StudentId = studentGrade.StudentId;
                 studentGradeToUpdate.EnrollmentId = studentGrade.EnrollmentId;

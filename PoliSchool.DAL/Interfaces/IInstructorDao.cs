@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoliSchool.DAL.Interfaces
 {
-    public interface IInstructor
+    public interface IInstructorDao
     {
         void SaveInstructor(Instructor instructor);
         void UpdateInstructor(Instructor instructor);

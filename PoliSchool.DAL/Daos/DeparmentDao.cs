@@ -31,6 +31,7 @@ namespace PoliSchool.DAL.Daos
                 model.Name = deparment.Name;
                 model.StartDate = deparment.StartDate.Value;
                 model.Creationdate = deparment.Creationdate;
+               
            
             }
             catch (Exception ex)
@@ -46,23 +47,26 @@ namespace PoliSchool.DAL.Daos
             try
             {
                 var query = from de in this.schoolDb.Deparments
-                            where de.Deleted == false
-                            orderby de.Creationdate descending
+                            where de.Deleted
+                            == false
                             select new DeparmentModel()
                             {
-                                Creationdate = de.Creationdate,
-                                StartDate = de.StartDate.Value,
                                 DepartmentID = de.DepartmentID,
                                 Name = de.Name,
+                                Budget = de.Budget,
+                                StartDate = de.StartDate.Value,
                                 Administrator = de.Administrator,
+                                Creationdate = de.Creationdate,
+
+
                             };
-                         
-                            deparment = query.ToList();
+
+                deparment = query.ToList();
 
             }
             catch (Exception)
             {
-                
+               
             }
             return deparment;
         }

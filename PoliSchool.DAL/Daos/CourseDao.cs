@@ -55,8 +55,8 @@ namespace PoliSchool.DAL.Daos
                                 Title = co.Title,
                                 Credits = co.Credits,
                             };
-                           
-                            course = query.ToList();
+
+                course = query.ToList();
 
             }
             catch(Exception)

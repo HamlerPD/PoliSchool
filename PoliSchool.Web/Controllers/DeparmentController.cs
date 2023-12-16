@@ -18,15 +18,16 @@ namespace PoliSchool.Web.Controllers
         // GET: DeparmentControllerController
         public ActionResult Index()
         {
-            var deparments = this.deparmentDao.GetDeparments().Select(de => new Models.DeparmentListModel()
+            var deparment = this.deparmentDao.GetDeparments().Select(de => new Models.DeparmentListModel()
             {
                 DepartmentID = de.DepartmentID,
                 Name = de.Name,
                 StartDate = de.StartDate,
+                Budget = de.Budget,
                 Administrator = de.Administrator,
                 Creationdate = de.Creationdate,
             }).ToList();
-            return View(deparments);
+            return View(deparment);
 
         }
 

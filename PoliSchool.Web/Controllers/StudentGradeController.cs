@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Entities;
 using PoliSchool.DAL.Interfaces;
-using PoliSchool.Web.Models;
+using StudentGradeModel = PoliSchool.Web.Models.StudentGradeModel;
 
 namespace PoliSchool.Web.Controllers
 {
@@ -52,10 +52,21 @@ namespace PoliSchool.Web.Controllers
         // POST: StudentGradeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(StudentGradeModel studentGradeModel)
         {
             try
             {
+                StudentGrade studentGradeToAdd = new StudentGrade()
+                {
+                    EnrollmentId = studentGradeModel.EnrollmentId,
+                    CourseId = studentGradeModel.CourseId,
+                    StudentId = studentGradeModel.StudentId,
+                    Grade = studentGradeModel.Grade
+
+
+                };
+                this.studentGradeDao.SaveStudentGrade(studentGradeToAdd);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -65,18 +76,37 @@ namespace PoliSchool.Web.Controllers
         }
 
         // GET: StudentGradeController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            return View();
+            var studentGradeModel = this.studentGradeDao.GetStudentGradeById(Id);
+            StudentGradeModel studentGrade = new StudentGradeModel()
+            {
+                EnrollmentId = studentGradeModel.EnrollmentId,
+                CourseId = studentGradeModel.CourseId,
+                StudentId = studentGradeModel.StudentId,
+                Grade = studentGradeModel.Grade
+            };
+
+            return View(studentGrade);
         }
 
         // POST: StudentGradeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(StudentGradeModel studentGradeModel)
         {
             try
             {
+                StudentGrade studentGradeToUpdate = new StudentGrade()
+                {
+                    EnrollmentId = studentGradeModel.EnrollmentId,
+                    CourseId = studentGradeModel.CourseId,
+                    StudentId = studentGradeModel.StudentId,
+                    Grade = studentGradeModel.Grade
+
+
+                };
+                this.studentGradeDao.UpdateStudentGrade(studentGradeToUpdate);
                 return RedirectToAction(nameof(Index));
             }
             catch

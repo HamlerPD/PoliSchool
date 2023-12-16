@@ -63,7 +63,7 @@ namespace PoliSchool.DAL.Daos
                             };
 
 
-                          students = query.ToList();
+                students = query.ToList();
                         
                           
             }
