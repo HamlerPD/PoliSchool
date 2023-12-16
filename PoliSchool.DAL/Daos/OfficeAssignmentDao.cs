@@ -7,7 +7,7 @@ using PoliSchool.DAL.Models;
 
 namespace PoliSchool.DAL.Daos
 {
-    public class OfficeAssignmentDao : IOfficeAssignment
+    public class OfficeAssignmentDao : IOfficeAssignmentDao
     {
         private readonly SchoolDbContext schoolDb;
 
@@ -21,7 +21,7 @@ namespace PoliSchool.DAL.Daos
             OfficeAssignmentModel model = new OfficeAssignmentModel();
             try
             {
-                OfficeAssignment? officeAssignment = schoolDb.OfficeAssignments.Find(instructorId);
+                OfficeAssignment officeAssignment = schoolDb.OfficeAssignments.Find(instructorId);
                 if (officeAssignment is null)
                     throw new OfficeAssignmentDaoExceptions(" La oficina no se encuentra registrada");
                 model.InstructorId = officeAssignment.InstructorId;
@@ -41,18 +41,24 @@ namespace PoliSchool.DAL.Daos
 
         public List<OfficeAssignmentModel> GetOfficeAssignmens()
         {
-            List<OfficeAssignmentModel> officeAssignment = new List<OfficeAssignmentModel>();
+            List<OfficeAssignmentModel> officeAssignments = new List<OfficeAssignmentModel>();
             try
             {
-          
+                var query = from of in this.schoolDb.OfficeAssignments
+                            select new OfficeAssignmentModel()
+                            {
+                              InstructorId = of.InstructorId, 
+                               Location = of.Location
 
+                            };
+                officeAssignments = query.ToList();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new OfficeAssignmentDaoExceptions(ex.Message);
+
             }
-            return officeAssignment;
+            return officeAssignments;
 
         }
 

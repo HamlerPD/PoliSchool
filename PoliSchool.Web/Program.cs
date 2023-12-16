@@ -24,7 +24,7 @@ builder.Services.AddTransient<IDeparment, DeparmentDao>();
 builder.Services.AddTransient<IInstructorDao, InstructorDao>();
 
 //Agregar contenedor de Dao(OfficeAssignment)
-builder.Services.AddTransient<IOfficeAssignment, OfficeAssignmentDao>();
+builder.Services.AddTransient<IOfficeAssignmentDao, OfficeAssignmentDao>();
 
 //Agregar contenedor de Dao(OnlineCourse)
 builder.Services.AddTransient<IOnlineCourseDao, OnlineCourseDao>();

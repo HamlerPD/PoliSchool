@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PoliSchool.DAL.Interfaces
 {
-    public interface IOfficeAssignment
+    public interface IOfficeAssignmentDao
     {
         void SaveOfficeAssignment(OfficeAssignment officeAssignment);
         void UpdateOfficeAssignment(OfficeAssignment officeAssignment);

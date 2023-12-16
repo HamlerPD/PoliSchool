@@ -1,14 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Interfaces;
 
 namespace PoliSchool.Web.Controllers
 {
     public class OfficeAssignmentController : Controller
     {
+
+        private readonly IOfficeAssignmentDao officeAssignmentDao;
+
+        public OfficeAssignmentController(IOfficeAssignmentDao officeAssignmentDao)
+        {
+            this.officeAssignmentDao = officeAssignmentDao;
+        }
+
         // GET: OfficeAssignmentModelController
         public ActionResult Index()
         {
-            return View();
+            var OfficeAssigment = this.officeAssignmentDao.GetOfficeAssignmens().Select(of => new Models.OfficeAssignmentListModel()
+            {
+                InstructorId = of.InstructorId, 
+                Location = of.Location
+
+            }).ToList();
+            return View(OfficeAssigment);
         }
 
         // GET: OfficeAssignmentModelController/Details/5

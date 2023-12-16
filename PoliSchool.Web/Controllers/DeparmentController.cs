@@ -9,10 +9,12 @@ namespace PoliSchool.Web.Controllers
     {
 
         private readonly IDeparment deparmentDao;
+        private readonly ICourseDao courseDao;
 
-        public DeparmentController(IDeparment deparmentDao)
+        public DeparmentController(IDeparment deparmentDao, ICourseDao courseDao)
         {
             this.deparmentDao = deparmentDao;
+            this.courseDao = courseDao;
         }
 
         // GET: DeparmentControllerController
@@ -27,6 +29,7 @@ namespace PoliSchool.Web.Controllers
                 Administrator = de.Administrator,
                 Creationdate = de.Creationdate,
             }).ToList();
+
             return View(deparment);
 
         }

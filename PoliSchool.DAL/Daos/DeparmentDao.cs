@@ -17,38 +17,36 @@ namespace PoliSchool.DAL.Daos
         {
             this.schoolDb = schoolDb;
         }
-        public DeparmentModel GetDeparmentById(int Id)
+        public DeparmentModel GetDeparmentById(int DeparmentId)
         {
             DeparmentModel model = new DeparmentModel();
             try
             {
-               Deparment? deparment = schoolDb.Deparments.Find(Id);
+               Deparment deparments = schoolDb.Deparments.Find(DeparmentId);
 
-                if (deparment == null)
+                if (deparments == null)
 
                     throw new DeparmentDaoExceptions(" El Deparmenton no se encuentra registrado ");
-                model.DepartmentID = deparment.DepartmentID;
-                model.Name = deparment.Name;
-                model.StartDate = deparment.StartDate.Value;
-                model.Creationdate = deparment.Creationdate;
+                model.DepartmentID = deparments.DepartmentID;
+                model.Name = deparments.Name;
+                model.StartDate = deparments.StartDate.Value;
+                model.Creationdate = deparments.Creationdate;
                
            
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new DeparmentDaoExceptions(ex.Message);
+               
             }
             return model;
         }
 
         public List<DeparmentModel> GetDeparments()
         {
-            List<DeparmentModel> deparment = new List<DeparmentModel>();
+            List<DeparmentModel> deparments = new List<DeparmentModel>();
             try
             {
                 var query = from de in this.schoolDb.Deparments
-                            where de.Deleted
-                            == false
                             select new DeparmentModel()
                             {
                                 DepartmentID = de.DepartmentID,
@@ -61,14 +59,14 @@ namespace PoliSchool.DAL.Daos
 
                             };
 
-                deparment = query.ToList();
+                deparments = query.ToList();
 
             }
             catch (Exception)
             {
-               
+                
             }
-            return deparment;
+            return deparments;
         }
 
         public void RemoveDeparment(Deparment deparment)
