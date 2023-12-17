@@ -9,7 +9,7 @@ namespace PoliSchool.Web.Controllers
     public class InstructorController : Controller
     { 
 
-        private readonly IInstructorDao? instructorDao;
+        private readonly IInstructorDao instructorDao;
 
         public InstructorController ( IInstructorDao instructorDao)
         {

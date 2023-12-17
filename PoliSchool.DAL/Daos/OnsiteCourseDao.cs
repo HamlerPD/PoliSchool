@@ -7,7 +7,7 @@ using PoliSchool.DAL.Models;
 
 namespace PoliSchool.DAL.Daos
 {
-    public class OnsiteCourseDao : IOnsiteCourse
+    public class OnsiteCourseDao : IOnsiteCourseDao
     {
         private readonly SchoolDbContext schoolDb;
 
@@ -46,24 +46,23 @@ namespace PoliSchool.DAL.Daos
             try
             {
                 var query = from Ons in this.schoolDb.OnsiteCourses
-                            where Ons.Deleted == false
+                           
                             select new OnsiteCourseModel()
                             {
                                 CourseId = Ons.CourseId,
                                 Location = Ons.Location,
                                 Days = Ons.Days,
                                 Time = Ons.Time,
-
                             };
 
 
-
+                onsiteCourses = query.ToList();
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new OnsiteCourseExceptions(ex.Message);
+
             }
             return onsiteCourses;
         }

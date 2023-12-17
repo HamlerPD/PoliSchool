@@ -9,9 +9,9 @@ namespace PoliSchool.DAL.Interfaces
     public interface IDeparment
 
     {
-        void SaveDeparment(Deparment deparment);
-        void UpdateDeparment(Deparment deparment);
-        void RemoveDeparment(Deparment deparment);
+        void SaveDeparment(Deparments deparment);
+        void UpdateDeparment(Deparments deparment);
+        void RemoveDeparment(Deparments deparment);
 
         List<DeparmentModel> GetDeparments();
 

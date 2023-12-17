@@ -14,7 +14,7 @@ namespace PoliSchool.DAL.Context
 
         public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Deparment> Deparments { get; set; }
+        public DbSet<Deparments> Deparments { get; set; }
 
         public DbSet<Instructor> Instructors { get; set; }
 

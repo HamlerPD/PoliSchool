@@ -4,7 +4,7 @@ using PoliSchool.DAL.Models;
 
 namespace PoliSchool.DAL.Interfaces
 {
-    public interface IOnsiteCourse
+    public interface IOnsiteCourseDao
     {
         List<OnsiteCourseModel> GetOnsiteCourse();
 

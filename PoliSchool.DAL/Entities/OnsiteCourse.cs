@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PoliSchool.DAL.Entities
 {
     [Table("OnsiteCourse")]
-    public partial class OnsiteCourse : BaseEntity
+    public partial class OnsiteCourse
     {
 
         [Key]

@@ -1,20 +1,47 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoliSchool.DAL.Interfaces;
+using PoliSchool.DAL.Models;
+using PoliSchool.Web.Models;
 
 namespace PoliSchool.Web.Controllers
 {
     public class OnsiteCourseController : Controller
     {
+        private readonly IOnsiteCourseDao onsiteCourseDao;
+
+        public OnsiteCourseController(IOnsiteCourseDao onsiteCourseDao)
+        {
+            this.onsiteCourseDao = onsiteCourseDao;
+        }
         // GET: OnsiteCourseController
         public ActionResult Index()
         {
-            return View();
+            var onsiteCourse = this.onsiteCourseDao.GetOnsiteCourse().Select(Ons => new Models.OnsiteCourseListModel()
+            {
+               CourseId = Ons.CourseId,
+                Location = Ons.Location,
+                Days = Ons.Days
+
+            }).ToList();
+            return View(onsiteCourse);
+           
         }
 
         // GET: OnsiteCourseController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var onsiteCourseModel = this.onsiteCourseDao.GetIOnsiteCourseById(id);
+            OnsiteCourseModel onsiteCourse = new OnsiteCourseModel()
+            {
+                CourseId = onsiteCourseModel.CourseId, 
+                Location = onsiteCourseModel.Location, 
+                Days = onsiteCourseModel.Days, 
+                Time = onsiteCourseModel.Time
+                
+            };
+            return View(onsiteCourse);
+         
         }
 
         // GET: OnsiteCourseController/Create

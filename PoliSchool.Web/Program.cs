@@ -30,7 +30,7 @@ builder.Services.AddTransient<IOfficeAssignmentDao, OfficeAssignmentDao>();
 builder.Services.AddTransient<IOnlineCourseDao, OnlineCourseDao>();
 
 //Agregar contenedor de Dao(OnsiteCourse)
-builder.Services.AddTransient<IOnsiteCourse, OnsiteCourseDao>();
+builder.Services.AddTransient<IOnsiteCourseDao, OnsiteCourseDao>();
 
 //Agregar contenedor de Dao(IStudentGrade)
 builder.Services.AddTransient<IStudentGradeDao, StudentGradeDao>();

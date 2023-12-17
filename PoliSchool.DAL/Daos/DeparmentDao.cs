@@ -22,7 +22,7 @@ namespace PoliSchool.DAL.Daos
             DeparmentModel model = new DeparmentModel();
             try
             {
-               Deparment deparments = schoolDb.Deparments.Find(DeparmentId);
+               Deparments? deparments = schoolDb.Deparments.Find(DeparmentId);
 
                 if (deparments == null)
 
@@ -30,13 +30,13 @@ namespace PoliSchool.DAL.Daos
                 model.DepartmentID = deparments.DepartmentID;
                 model.Name = deparments.Name;
                 model.StartDate = deparments.StartDate.Value;
-                model.Creationdate = deparments.Creationdate;
-               
-           
+
+
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-               
+                throw new StudentDaoExceptions(ex.Message);
             }
             return model;
         }
@@ -47,6 +47,7 @@ namespace PoliSchool.DAL.Daos
             try
             {
                 var query = from de in this.schoolDb.Deparments
+                            
                             select new DeparmentModel()
                             {
                                 DepartmentID = de.DepartmentID,
@@ -54,7 +55,7 @@ namespace PoliSchool.DAL.Daos
                                 Budget = de.Budget,
                                 StartDate = de.StartDate.Value,
                                 Administrator = de.Administrator,
-                                Creationdate = de.Creationdate,
+                                
 
 
                             };
@@ -69,19 +70,17 @@ namespace PoliSchool.DAL.Daos
             return deparments;
         }
 
-        public void RemoveDeparment(Deparment deparment)
+        public void RemoveDeparment(Deparments deparment)
         {
 
             DeparmentModel model = new DeparmentModel();
             try
             {
-                Deparment? deparmentToRemove = this.schoolDb.Deparments.Find(deparment.DepartmentID);
+                Deparments? deparmentToRemove = this.schoolDb.Deparments.Find(deparment.DepartmentID);
 
                 if (deparmentToRemove == null)
                     throw new DeparmentDaoExceptions(" El curso no se encuentra registrado ");
-                deparmentToRemove.Deleted = deparment.Deleted;
-                deparmentToRemove.DeletedDate = deparment.DeletedDate;
-                deparmentToRemove.UserDeleted = deparment.UserDeleted;
+               
 
                 this.schoolDb.Deparments.Update(deparmentToRemove);
                 this.schoolDb.SaveChanges();
@@ -92,7 +91,7 @@ namespace PoliSchool.DAL.Daos
             }
         }
 
-        public void SaveDeparment(Deparment deparment)
+        public void SaveDeparment(Deparments deparment)
         {
             try
             {
@@ -110,22 +109,21 @@ namespace PoliSchool.DAL.Daos
 
         }
 
-        public void UpdateDeparment(Deparment deparment)
+        public void UpdateDeparment(Deparments deparment)
         {
             try
             {
-                Deparment? deparmentToUpdate = this.schoolDb.Deparments.Find(deparment.DepartmentID);
+                Deparments? deparmentToUpdate = this.schoolDb.Deparments.Find(deparment.DepartmentID);
 
                 if (deparmentToUpdate is null)
                     throw new DeparmentDaoExceptions("El deparmento no se encuentra registrado.");
 
 
-                deparmentToUpdate.Modifydate = deparment.Modifydate;
-                deparmentToUpdate.UserMod = deparment.UserMod;
+               
                 deparmentToUpdate.DepartmentID = deparment.DepartmentID;
                 deparmentToUpdate.Name = deparment.Name;
                 deparmentToUpdate.Administrator = deparment.Administrator;
-                deparmentToUpdate.Creationdate = deparment.Creationdate;
+             
                 deparmentToUpdate.StartDate = deparment.StartDate.Value;
 
 
