@@ -14,7 +14,6 @@ namespace PoliSchool.DAL.Entities
         public decimal Budget { get; set; }
         public DateTime? StartDate { get; set; }
         public int? Administrator { get; set; }
-
-
+        public bool Deleted { get; internal set; }
     }
 }

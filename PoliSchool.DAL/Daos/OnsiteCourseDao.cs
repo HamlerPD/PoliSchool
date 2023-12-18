@@ -33,9 +33,9 @@ namespace PoliSchool.DAL.Daos
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new OnsiteCourseExceptions(ex.Message);
+               
             }
             return model;
         }

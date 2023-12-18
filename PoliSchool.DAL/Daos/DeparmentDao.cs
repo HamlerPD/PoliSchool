@@ -22,7 +22,7 @@ namespace PoliSchool.DAL.Daos
             DeparmentModel model = new DeparmentModel();
             try
             {
-               Deparments? deparments = schoolDb.Deparments.Find(DeparmentId);
+               Deparments deparments = schoolDb.Deparments.Find(DeparmentId);
 
                 if (deparments == null)
 
@@ -47,7 +47,8 @@ namespace PoliSchool.DAL.Daos
             try
             {
                 var query = from de in this.schoolDb.Deparments
-                            
+                            where de.Deleted == false
+                            orderby de.StartDate descending
                             select new DeparmentModel()
                             {
                                 DepartmentID = de.DepartmentID,
