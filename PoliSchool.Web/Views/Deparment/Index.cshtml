@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista De Departamentos</h1>
+<h1>Deparmantos</h1>
 
 <p>
     <a asp-action="Create">Crear Nuevo</a>
@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DepartmentID)
+                Codigo Del Deparmento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nombre Del Departamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
+                Presupuesto Del Departamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Creationdate)
+                Fecha De Igreso Del Departamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Administrator)
+                Fecha De Creacion Del Departamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationdateDisplay)
+                Administrador Del Deparmento
             </th>
             <th></th>
         </tr>
@@ -43,6 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
@@ -55,9 +58,9 @@
                 @Html.DisplayFor(modelItem => item.CreationdateDisplay)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID}) |
-                @Html.ActionLink("Details", "Details", new { id=item.DepartmentID}) 
-             
+                @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) |
+               
             </td>
         </tr>
 }

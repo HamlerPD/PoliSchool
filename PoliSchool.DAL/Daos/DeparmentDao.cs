@@ -22,7 +22,7 @@ namespace PoliSchool.DAL.Daos
             DeparmentModel model = new DeparmentModel();
             try
             {
-               Deparments deparments = schoolDb.Deparments.Find(DeparmentId);
+               Deparments? deparments = schoolDb.Deparments.Find(DeparmentId);
 
                 if (deparments == null)
 
@@ -124,7 +124,6 @@ namespace PoliSchool.DAL.Daos
                 deparmentToUpdate.DepartmentID = deparment.DepartmentID;
                 deparmentToUpdate.Name = deparment.Name;
                 deparmentToUpdate.Administrator = deparment.Administrator;
-             
                 deparmentToUpdate.StartDate = deparment.StartDate.Value;
 
 
