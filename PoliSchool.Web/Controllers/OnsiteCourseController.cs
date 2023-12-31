@@ -32,13 +32,13 @@ namespace PoliSchool.Web.Controllers
         public ActionResult Details(int id)
         {
             var onsiteCourseModel = this.onsiteCourseDao.GetIOnsiteCourseById(id);
-            OnsiteCourseModel onsiteCourse = new OnsiteCourseModel()
+            OnsiteCourseListModel onsiteCourse = new OnsiteCourseListModel()
             {
-                CourseId = onsiteCourseModel.CourseId, 
+                CourseId = onsiteCourseModel.CourseId,
                 Location = onsiteCourseModel.Location, 
                 Days = onsiteCourseModel.Days, 
                 Time = onsiteCourseModel.Time
-                
+
             };
             return View(onsiteCourse);
          

@@ -4,31 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Deparmantos</h1>
+<h1>Departamentos</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo</a>
+    <a asp-action="Create">Agregar Nuevo</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Codigo Del Deparmento
+                Codigo Departamento
             </th>
             <th>
-                Nombre Del Departamento
+                Nombre
             </th>
             <th>
-                Presupuesto Del Departamento
+                Administrador
             </th>
             <th>
-                Fecha De Igreso Del Departamento
-            </th>
-            <th>
-                Fecha De Creacion Del Departamento
-            </th>
-            <th>
-                Administrador Del Deparmento
+                Fecha de Creacion
             </th>
             <th></th>
         </tr>
@@ -59,8 +53,8 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) |
-               
+                @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) 
+              
             </td>
         </tr>
 }
